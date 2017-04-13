@@ -1,0 +1,52 @@
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel"
+     data-backdrop="false" data-target="#mymodal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" ng-class="{'modal-sm':$ctrl.options.isWarm}">
+      <div class="modal-header">
+        <span>{{$ctrl.options.title}}</span>
+        <button type="button" class="close" data-dismiss="modal"
+                aria-hidden="true">&times;
+        </button>
+      </div>
+      <div class="modal-body" ng-class="{'padding-top: 10px':!$ctrl.options.isWarm}" ng-transclude>
+        <div class="modal-body-align" ng-if="$ctrl.options.isWarm">
+          <i class="fa fa-warning m-md"></i>
+          <span>告警信息</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button ng-if="$ctrl.options.isCancel" type="button" class="btn btn-default" data-dismiss="modal"
+                aria-hidden="true">Cancel
+        </button>
+        <button ng-if="$ctrl.options.isOk" type="button" class="btn btn-primary" data-dismiss="modal"
+                aria-hidden="true">OK
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  vm.options={
+      isOk:function(){
+        alert("Ok");
+      },
+      isCancel:function(){
+        alert("cancel");
+      },
+      isTitle:"alarm information"
+    };
+
+
+
+
+    $uibModal.open({
+        template: "<div>111</div>",
+        // <modal-shell options='$ctrl.resolve.options'></modal-shell>
+        resolve: {
+          options:vm.options
+        }
+      });
